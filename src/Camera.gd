@@ -65,9 +65,6 @@ func key(event):
 			print("back")
 		"D":
 			print("right")
-
-func _process(delta):
-	print(doMovement)
 	
 func _input(event):
 	##

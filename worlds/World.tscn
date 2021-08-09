@@ -89,6 +89,12 @@ __meta__ = {
 [node name="DirectionalLight" type="DirectionalLight" parent="Main"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.62427, 0 )
 
+[node name="Box" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1.23114, 0, 0, 0, 1, -6.16596, 0.221168, 3.46494 )
+
+[node name="Box2" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.846554, 0, 0, 0, 0.461749, 0, 0, 0, 1, -6.33145, -0.4463, -1.96213 )
+
 [connection signal="do_pause" from="Main/FPS" to="Main/Pause Menu" method="_on_FPS_do_pause"]
 
 [editable path="Main/ENV/Box5"]

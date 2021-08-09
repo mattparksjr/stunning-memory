@@ -43,6 +43,40 @@ skin = SubResource( 1 )
 [node name="Box" parent="Main/ENV/Box5" instance=ExtResource( 3 )]
 transform = Transform( 0.860609, 0, 0, 0, 0.795192, 0, 0, 0, 1, -12.5083, -0.193572, 7.48458 )
 
+[node name="Box6" parent="Main/ENV" instance=ExtResource( 3 )]
+transform = Transform( 0.552904, 0, 0, 0, 1.42517, 0, 0, 0, 0.56216, -0.00609446, 2.44519, 6.96542 )
+
+[node name="Box7" parent="Main/ENV" instance=ExtResource( 3 )]
+transform = Transform( 1.85839, 0, 0, 0, 0.442501, 0, 0, 0, 1.63096, 0.0383056, 4.29131, 7.07945 )
+
+[node name="Box8" parent="Main/ENV" instance=ExtResource( 3 )]
+transform = Transform( 0.37962, 0, 0, 0, 1.44134, 0, 0, 0, 0.424972, 6.78907, 2.40906, 8.07828 )
+
+[node name="Box9" parent="Main/ENV" instance=ExtResource( 3 )]
+transform = Transform( 0.556355, 0, 0, 0, 1.35889, 0, 0, 0, 0.548985, 5.06733, 2.38907, 6.09195 )
+
+[node name="Box10" parent="Main/ENV" instance=ExtResource( 3 )]
+transform = Transform( 1.33323, 0, 0, 0, 0.502075, 0, 0, 0, 1.48423, 5.84089, 4.24127, 7.02182 )
+
+[node name="Box11" parent="Main/ENV" instance=ExtResource( 3 )]
+transform = Transform( 0.133062, 0, 0, 0, 6.50786, 0, 0, 0, 8.45903, 7.06749, 7.57893, 0.0010891 )
+color = Color( 0.882353, 0.188235, 0.156863, 1 )
+
+[node name="Box12" parent="Main/ENV" instance=ExtResource( 3 )]
+transform = Transform( 0.588185, 0, 0, 0, 0.303438, 0, 0, 0, 0.32412, 6.49031, 5.6411, 2.07449 )
+
+[node name="Box13" parent="Main/ENV" instance=ExtResource( 3 )]
+transform = Transform( 0.497075, 0, 0, 0, 0.256435, 0, 0, 0, 0.273914, 6.49031, 6.59804, -1.71707 )
+
+[node name="Box14" parent="Main/ENV" instance=ExtResource( 3 )]
+transform = Transform( 0.497075, 0, 0, 0, 1.07988, 0, 0, 0, 0.273914, 6.49031, 7.93357, -5.04546 )
+
+[node name="Box15" parent="Main/ENV" instance=ExtResource( 3 )]
+transform = Transform( 0.497075, 0, 0, 0, 1.05975, 0, 0, 0, 0.273914, 6.49031, 7.90059, -7.02381 )
+
+[node name="Box16" parent="Main/ENV" instance=ExtResource( 3 )]
+transform = Transform( 0.735596, 0, 0, 0, 0.256435, 0, 0, 0, 1.26525, 6.44301, 6.63897, -6.03942 )
+
 [node name="FPSCounter" type="Label" parent="Main"]
 margin_right = 40.0
 margin_bottom = 14.0
@@ -51,40 +85,6 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Box" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.552904, 0, 0, 0, 1.42517, 0, 0, 0, 0.56216, -0.00609446, 0.526351, 6.96542 )
-
-[node name="Box2" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1.85839, 0, 0, 0, 0.442501, 0, 0, 0, 1.63096, 0.0383056, 2.37247, 7.07945 )
-
-[node name="Box3" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.37962, 0, 0, 0, 1.44134, 0, 0, 0, 0.424972, 6.78907, 0.490219, 8.07828 )
-
-[node name="Box4" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.556355, 0, 0, 0, 1.35889, 0, 0, 0, 0.548985, 5.06733, 0.470225, 6.09195 )
-
-[node name="Box5" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1.33323, 0, 0, 0, 0.502075, 0, 0, 0, 1.48423, 5.84089, 2.32243, 7.02182 )
-
-[node name="Box6" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.133062, 0, 0, 0, 6.50786, 0, 0, 0, 8.45903, 7.06749, 5.66009, 0.0010891 )
-color = Color( 0.882353, 0.188235, 0.156863, 1 )
-
-[node name="Box7" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.588185, 0, 0, 0, 0.303438, 0, 0, 0, 0.32412, 6.49031, 3.72226, 2.07449 )
-
-[node name="Box8" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.497075, 0, 0, 0, 0.256435, 0, 0, 0, 0.273914, 6.49031, 4.6792, -1.71707 )
-
-[node name="Box12" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.497075, 0, 0, 0, 1.07988, 0, 0, 0, 0.273914, 6.49031, 6.01473, -5.04546 )
-
-[node name="Box13" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.497075, 0, 0, 0, 1.05975, 0, 0, 0, 0.273914, 6.49031, 5.98175, -7.02381 )
-
-[node name="Box11" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.735596, 0, 0, 0, 0.256435, 0, 0, 0, 1.26525, 6.44301, 4.72013, -6.03942 )
 
 [connection signal="do_pause" from="Main/FPS" to="Main/Pause Menu" method="_on_FPS_do_pause"]
 

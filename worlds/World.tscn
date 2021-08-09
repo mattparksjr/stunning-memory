@@ -40,5 +40,8 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.283941, -0.401387, -3.
 [node name="Box3" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4.55858, 0.842436, 4.83126 )
 
+[node name="Box4" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1.09527, 0, 0, 0, 1.10822, 0, 0, 0, 1.09527, -6.02033, 0.211029, -7.3784 )
+
 [editable path="Box"]
 [editable path="Box2"]

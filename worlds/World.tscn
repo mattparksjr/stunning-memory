@@ -27,7 +27,7 @@ transform = Transform( 7.16941, 0, 0, 0, 1, 0, 0, 0, 8.50057, 0, 0, 0 )
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.283941, 1.51745, -3.29558 )
 
 [node name="Box3" parent="Main/ENV" instance=ExtResource( 3 )]
-transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4.55858, 2.76128, 4.83126 )
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -5.70362, 2.56519, 7.00815 )
 
 [node name="Box4" parent="Main/ENV" instance=ExtResource( 3 )]
 transform = Transform( 1.09527, 0, 0, 0, 1.10822, 0, 0, 0, 1.09527, -6.02033, 2.12987, -7.3784 )
@@ -38,6 +38,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1817, 2.00249, -7.52001 )
 [node name="MeshInstance" parent="Main/ENV/Box5" index="0"]
 skin = SubResource( 1 )
 
+[node name="Box" parent="Main/ENV/Box5" instance=ExtResource( 3 )]
+transform = Transform( 0.860609, 0, 0, 0, 0.795192, 0, 0, 0, 1, -12.5083, -0.193572, 7.48458 )
+
 [node name="FPSCounter" type="Label" parent="Main"]
 margin_right = 40.0
 margin_bottom = 14.0
@@ -46,6 +49,39 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Box" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.552904, 0, 0, 0, 1.42517, 0, 0, 0, 0.56216, -0.00609446, 0.526351, 6.96542 )
+
+[node name="Box2" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1.85839, 0, 0, 0, 0.442501, 0, 0, 0, 1.63096, 0.0383056, 2.37247, 7.07945 )
+
+[node name="Box3" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.37962, 0, 0, 0, 1.44134, 0, 0, 0, 0.424972, 6.78907, 0.490219, 8.07828 )
+
+[node name="Box4" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.556355, 0, 0, 0, 1.35889, 0, 0, 0, 0.548985, 5.06733, 0.470225, 6.09195 )
+
+[node name="Box5" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1.33323, 0, 0, 0, 0.502075, 0, 0, 0, 1.48423, 5.84089, 2.32243, 7.02182 )
+
+[node name="Box6" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.133062, 0, 0, 0, 6.50786, 0, 0, 0, 8.45903, 7.06749, 5.66009, 0.0010891 )
+
+[node name="Box7" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.588185, 0, 0, 0, 0.303438, 0, 0, 0, 0.32412, 6.49031, 3.72226, 2.07449 )
+
+[node name="Box8" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.497075, 0, 0, 0, 0.256435, 0, 0, 0, 0.273914, 6.49031, 4.6792, -1.71707 )
+
+[node name="Box12" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.497075, 0, 0, 0, 0.833613, 0, 0, 0, 0.273914, 6.49031, 5.79778, -5.04546 )
+
+[node name="Box13" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.497075, 0, 0, 0, 0.833613, 0, 0, 0, 0.273914, 6.49031, 5.8113, -7.02381 )
+
+[node name="Box11" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.735596, 0, 0, 0, 0.256435, 0, 0, 0, 1.26525, 6.44301, 4.72013, -6.03942 )
 
 [connection signal="do_pause" from="Main/FPS" to="Main/Pause Menu" method="_on_FPS_do_pause"]
 

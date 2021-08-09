@@ -7,6 +7,7 @@
 extends KinematicBody
 
 export var speed = 7
+export var sprint_speed_multi = 1.5
 
 # These could be constants butttt export more fun :)
 export var ACCEL_DEFAULT = 7
@@ -87,8 +88,12 @@ func _physics_process(delta):
 			gravity_vec = Vector3.UP * jump
 	
 		# make it move
-		velocity = velocity.linear_interpolate(direction * speed, accel * delta)
-		movement = velocity + gravity_vec
+		if(Input.is_action_pressed("sprint")):
+			velocity = velocity.linear_interpolate(direction * speed * sprint_speed_multi, accel * delta)
+			movement = velocity + gravity_vec
+		else:
+			velocity = velocity.linear_interpolate(direction * speed, accel * delta)
+			movement = velocity + gravity_vec
 	
 		move_and_slide_with_snap(movement, snap, Vector3.UP)
 	
@@ -105,7 +110,3 @@ func _enter_tree():
 	
 func _leave_tree():
 	show_mouse()
-
-
-func _on_FPS_do_pause():
-	pass # Replace with function body.

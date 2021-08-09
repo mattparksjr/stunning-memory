@@ -86,6 +86,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="DirectionalLight" type="DirectionalLight" parent="Main"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.62427, 0 )
+
 [connection signal="do_pause" from="Main/FPS" to="Main/Pause Menu" method="_on_FPS_do_pause"]
 
 [editable path="Main/ENV/Box5"]

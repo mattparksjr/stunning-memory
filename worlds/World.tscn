@@ -1,31 +1,20 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://prefabs/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://prefabs/FPS.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/FPSCounter.gd" type="Script" id=2]
-
-[sub_resource type="CubeMesh" id=1]
-
-[sub_resource type="BoxShape" id=2]
-extents = Vector3( 1.49605, 1, 2.16278 )
+[ext_resource path="res://prefabs/Box.tscn" type="PackedScene" id=3]
 
 [node name="Spatial" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91884, 0 )
 
 [node name="Main" type="Node" parent="."]
 
+[node name="FPS" parent="Main" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0133128, 1.98403, -0.0485492 )
+
 [node name="ENV" type="Node" parent="Main"]
 
-[node name="MeshInstance" type="MeshInstance" parent="Main/ENV"]
-transform = Transform( 81.1831, 0, 0, 0, 1.26724, 0, 0, 0, 89.9031, -0.304658, -1.95954, 0.188327 )
-mesh = SubResource( 1 )
-material/0 = null
-
-[node name="KinematicBody" type="KinematicBody" parent="Main/ENV"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.02336, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Main/ENV/KinematicBody"]
-transform = Transform( -336.137, 0, 0, 0, -3.81499, 0, 0, 0, -233.887, -0.23702, -1.56913, 0.179531 )
-shape = SubResource( 2 )
+[node name="Box" parent="Main" instance=ExtResource( 3 )]
 
 [node name="FPSCounter" type="Label" parent="Main"]
 margin_right = 40.0
@@ -35,6 +24,3 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Player" parent="Main" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.85059, -0.667646, -8.31481 )

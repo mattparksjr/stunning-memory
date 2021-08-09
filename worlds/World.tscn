@@ -16,8 +16,23 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00458004, 1.98403, -0.05190
 
 [node name="ENV" type="Node" parent="Main"]
 
-[node name="Box" parent="Main" instance=ExtResource( 3 )]
+[node name="Box" parent="Main/ENV" instance=ExtResource( 3 )]
 transform = Transform( 7.16941, 0, 0, 0, 1, 0, 0, 0, 8.50057, 0, 0, 0 )
+
+[node name="Box2" parent="Main/ENV" instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.283941, 1.51745, -3.29558 )
+
+[node name="Box3" parent="Main/ENV" instance=ExtResource( 3 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4.55858, 2.76128, 4.83126 )
+
+[node name="Box4" parent="Main/ENV" instance=ExtResource( 3 )]
+transform = Transform( 1.09527, 0, 0, 0, 1.10822, 0, 0, 0, 1.09527, -6.02033, 2.12987, -7.3784 )
+
+[node name="Box5" parent="Main/ENV" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1817, 2.00249, -7.52001 )
+
+[node name="MeshInstance" parent="Main/ENV/Box5" index="0"]
+skin = SubResource( 1 )
 
 [node name="FPSCounter" type="Label" parent="Main"]
 margin_right = 40.0
@@ -28,20 +43,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Box" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1817, 0.0836548, -7.52001 )
-
-[node name="MeshInstance" parent="Box" index="0"]
-skin = SubResource( 1 )
-
-[node name="Box2" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.283941, -0.401387, -3.29558 )
-
-[node name="Box3" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4.55858, 0.842436, 4.83126 )
-
-[node name="Box4" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1.09527, 0, 0, 0, 1.10822, 0, 0, 0, 1.09527, -6.02033, 0.211029, -7.3784 )
-
-[editable path="Box"]
-[editable path="Box2"]
+[editable path="Main/ENV/Box5"]

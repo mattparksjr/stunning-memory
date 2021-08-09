@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://prefabs/FPS.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/FPSCounter.gd" type="Script" id=2]
 [ext_resource path="res://prefabs/Box.tscn" type="PackedScene" id=3]
+[ext_resource path="res://prefabs/PauseMenu.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Skin" id=1]
 
@@ -10,6 +11,9 @@
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91884, 0 )
 
 [node name="Main" type="Node" parent="."]
+
+[node name="Pause Menu" parent="Main" instance=ExtResource( 4 )]
+visible = false
 
 [node name="FPS" parent="Main" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00458004, 1.98403, -0.0519004 )
@@ -42,5 +46,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="do_pause" from="Main/FPS" to="Main/Pause Menu" method="_on_FPS_do_pause"]
 
 [editable path="Main/ENV/Box5"]

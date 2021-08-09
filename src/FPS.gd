@@ -26,6 +26,7 @@ var velocity = Vector3()
 var gravity_vec = Vector3()
 var movement = Vector3()
 
+signal do_pause
 onready var head = $Head
 onready var camera = $Head/Camera
 
@@ -43,6 +44,7 @@ func _input(event):
 		# Keybinds, and pause menu
 		if(Input.is_action_pressed("pause")):
 			paused = !paused
+			emit_signal("do_pause")
 		# No in-line :( sad days
 		if(paused):
 			show_mouse()
@@ -103,3 +105,7 @@ func _enter_tree():
 	
 func _leave_tree():
 	show_mouse()
+
+
+func _on_FPS_do_pause():
+	pass # Replace with function body.

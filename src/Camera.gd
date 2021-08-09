@@ -1,14 +1,7 @@
-## The fps controller
-## Author: Matthew
+
 extends Camera
 
 onready var Yaw = get_parent()
-
-var doMovement = true
-
-## Called on the script ready(not in scene)
-func _ready():
-	set_process_input(true)
 
 func look_updown_rotation(rotation = 0):
 	"""
@@ -30,9 +23,6 @@ func look_leftright_rotation(rotation = 0):
 	"""
 	return Yaw.get_rotation() + Vector3(0, rotation, 0)
 
-func mouse(event):
-	if(!doMovement):
-		return
 	"""
 	First person camera controls
 	"""
@@ -46,38 +36,4 @@ func mouse(event):
 	## Now we can simply set our y-rotation for the camera, and let godot
 	## handle the transformation of both together
 	self.set_rotation(look_updown_rotation(event.relative.y / -200))
-
-# Called when a key is pressed
-func key(event):
-	## While im comparing the key codes here, it may not be ideal to do it this way
-	## thus, TODO
-	if(event.scancode == KEY_ESCAPE && event.pressed):
-		doMovement = !doMovement
-		if(doMovement == false):
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
-	match OS.get_scancode_string(event.scancode):
-		"W":
-			print("forward")
-		"A":
-			print("left")
-		"S":
-			print("back")
-		"D":
-			print("right")
-	
-func _input(event):
-	##
-	## We'll only process mouse motion events
-	if event is InputEventKey:
-		return key(event)
-	if event is InputEventMouseMotion:
-		return mouse(event)
-
-# Called when node enters the scene
-func _enter_tree():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
-# Called when node leaves the scene
-func _leave_tree():
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

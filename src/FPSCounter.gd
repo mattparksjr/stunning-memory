@@ -1,6 +1,8 @@
-## Simple FPS counter
-## Author: Matthew
-
+#########################################
+# Name: FPSCounter
+# Author: Matthew Parks
+# Desc: Debug related display code
+#########################################
 extends Label
 
 func _ready():

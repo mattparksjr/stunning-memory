@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/FPS.gd" type="Script" id=1]
-[ext_resource path="res://assets/art/cross_hair.png" type="Texture" id=2]
-[ext_resource path="res://src/Crosshair.gd" type="Script" id=3]
+[ext_resource path="res://src/Crosshair.gd" type="Script" id=2]
+[ext_resource path="res://assets/art/cross_hair.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.5
@@ -32,5 +32,5 @@ transform = Transform( 1.11111, 0, 0, 0, 1.11111, 0, 0, 0, 1.11111, 0, 0.0945113
 [node name="Sprite" type="Sprite" parent="Head/Camera"]
 position = Vector2( 610.413, 277.996 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 2 )
-script = ExtResource( 3 )
+texture = ExtResource( 3 )
+script = ExtResource( 2 )

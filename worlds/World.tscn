@@ -4,11 +4,10 @@
 [ext_resource path="res://src/FPSCounter.gd" type="Script" id=2]
 [ext_resource path="res://prefabs/Box.tscn" type="PackedScene" id=3]
 [ext_resource path="res://prefabs/PauseMenu.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/DeathArea.gd" type="Script" id=5]
+[ext_resource path="res://worlds/matts world.tscn" type="PackedScene" id=5]
+[ext_resource path="res://worlds/tree1.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Skin" id=1]
-
-[sub_resource type="BoxShape" id=2]
 
 [node name="Spatial" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91884, 0 )
@@ -98,12 +97,11 @@ __meta__ = {
 [node name="DirectionalLight" type="DirectionalLight" parent="Main"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.62427, 0 )
 
-[node name="DeathArea" type="Area" parent="."]
-transform = Transform( 500, 0, 0, 0, 1, 0, 0, 0, 500, 0, -13.5517, 0 )
+[node name="Mesh" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -45.0395, -6.82045, 39.054 )
 
-[node name="CollisionShape" type="CollisionShape" parent="DeathArea"]
-shape = SubResource( 2 )
-script = ExtResource( 5 )
+[node name="tree1" parent="." instance=ExtResource( 6 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -21.3609, -5.42377, -3.76008 )
 
 [connection signal="do_pause" from="Main/FPS" to="Main/Pause Menu" method="_on_FPS_do_pause"]
 

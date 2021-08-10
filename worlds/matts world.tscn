@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/model/world.vox" type="ArrayMesh" id=1]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.241363, 1, 0.241297 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.204098, 0.531505, 0.205185 )
+
+[sub_resource type="GIProbeData" id=3]
+bounds = AABB( -50, -100, -50, 100, 200, 100 )
+cell_size = 1.5625
+to_cell_xform = Transform( 0.64, 0, 0, 0, 0.64, 0, 0, 0, 0.64, 32, 64, 32 )
+dynamic_data = PoolIntArray( 0, 8, 64, 128, 64, 1, 0, 0, 0, 1014297511, 0, 0, 0, 0, 0, 2030, -1, -1, -1, -1, -1, -1, -1, -1, 0, 0, 8355711, 0 )
+dynamic_range = 4
+energy = 0.5
+bias = 1.5
+normal_bias = 0.0
+propagation = 0.7
+
+[sub_resource type="ProceduralSky" id=4]
+
+[sub_resource type="Environment" id=5]
+background_mode = 2
+background_sky = SubResource( 4 )
+background_energy = 0.5
+ambient_light_color = Color( 0.74902, 0.184314, 0.184314, 1 )
+tonemap_mode = 3
+tonemap_white = 16.0
+ssao_enabled = true
+ssao_intensity = 3.0
+
+[node name="Mesh" type="MeshInstance"]
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="KinematicBody" type="KinematicBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
+transform = Transform( 200, 0, 0, 0, 1, 0, 0, 0, 200, 0, -0.491535, 0 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="KinematicBody"]
+transform = Transform( 7.351, 0, 0, 0, 12.599, 0, 0, 0, 7.274, 40.0411, -1.18046, 42.9997 )
+shape = SubResource( 2 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( -0.0515104, 0.735006, -0.676101, 0.0530433, 0.678058, 0.733092, 0.997263, 0.00189918, -0.0739142, -35.7547, 30.0831, 29.4818 )
+
+[node name="GIProbe" type="GIProbe" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46111, 0, 0 )
+extents = Vector3( 50, 100, 50 )
+energy = 0.5
+data = SubResource( 3 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 5 )

@@ -1,17 +1,17 @@
 [gd_scene load_steps=8 format=2]
 
+[ext_resource path="res://src/singleton/Server.gd" type="Script" id=1]
 [ext_resource path="res://src/FPSCounter.gd" type="Script" id=2]
 [ext_resource path="res://prefabs/Box.tscn" type="PackedScene" id=3]
 [ext_resource path="res://prefabs/PauseMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://worlds/matts world.tscn" type="PackedScene" id=5]
 [ext_resource path="res://worlds/tree1.tscn" type="PackedScene" id=6]
-[ext_resource path="res://worlds/Game.gd" type="Script" id=7]
 
 [sub_resource type="Skin" id=1]
 
 [node name="Spatial" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91884, 0 )
-script = ExtResource( 7 )
+script = ExtResource( 1 )
 
 [node name="Main" type="Node" parent="."]
 
@@ -58,7 +58,7 @@ transform = Transform( 0.556355, 0, 0, 0, 1.35889, 0, 0, 0, 0.548985, -3.55857, 
 transform = Transform( 1.33323, 0, 0, 0, 0.502075, 0, 0, 0, 1.48423, -2.78501, 4.24127, 7.02182 )
 
 [node name="Box11" parent="Main/ENV" instance=ExtResource( 3 )]
-transform = Transform( 0.133062, 0, 0, 0, 6.50786, 0, 0, 0, 8.45903, -1.55841, 7.57893, 0.0010891 )
+transform = Transform( 0.133062, 0, 0, 0, 6.50786, 0, 0, 0, 8.45903, -1.55954, 7.56894, 0.00792599 )
 color = Color( 0.882353, 0.188235, 0.156863, 1 )
 
 [node name="Box12" parent="Main/ENV" instance=ExtResource( 3 )]

@@ -21,8 +21,12 @@ _global_script_class_icons={
 [application]
 
 config/name="FPS"
-run/main_scene="res://worlds/World.tscn"
+run/main_scene="res://worlds/Lobby.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Globals="*res://src/Globals.gd"
 
 [display]
 

@@ -15,7 +15,7 @@ export var ACCEL_AIR = 1
 
 onready var accel = ACCEL_DEFAULT
 export var gravity = 9.8
-export var jump = 5
+export var jump = 4.5
 
 export var cam_accel = 40
 export var mouse_sense = 0.1
@@ -63,6 +63,9 @@ func _process(delta):
 		camera.set_as_toplevel(false)
 		camera.global_transform = head.global_transform
 		
+remote func _set_position(pos):
+	global_transform.origin = pos
+
 func _physics_process(delta):
 	if not paused:
 		direction = Vector3.ZERO
@@ -95,7 +98,10 @@ func _physics_process(delta):
 			velocity = velocity.linear_interpolate(direction * speed, accel * delta)
 			movement = velocity + gravity_vec
 	
-		move_and_slide_with_snap(movement, snap, Vector3.UP)
+		if direction != Vector3():
+			if is_network_master():
+				move_and_slide_with_snap(movement, snap, Vector3.UP)
+			rpc_unreliable("_set_position", global_transform.origin)
 	
 ################ Mouse visibly helpers ################
 func hide_mouse():

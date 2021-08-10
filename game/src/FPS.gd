@@ -99,9 +99,7 @@ func _physics_process(delta):
 			movement = velocity + gravity_vec
 	
 		if direction != Vector3():
-			if is_network_master():
-				move_and_slide_with_snap(movement, snap, Vector3.UP)
-			rpc_unreliable("_set_position", global_transform.origin)
+			move_and_slide_with_snap(movement, snap, Vector3.UP)
 	
 ################ Mouse visibly helpers ################
 func hide_mouse():

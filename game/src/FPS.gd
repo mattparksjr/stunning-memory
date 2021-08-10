@@ -51,6 +51,10 @@ func _input(event):
 			show_mouse()
 		else:
 			hide_mouse()
+		# TODO: DEBUG ONLY
+		if Input.is_key_pressed(KEY_KP_4):
+			print("DEBUG KEY PRESSED")
+			Gateway._connect("username", "password")
 
 func _process(delta):
 	# camera physics interpolation to reduce physics jitter on high refresh-rate monitors (like matts)

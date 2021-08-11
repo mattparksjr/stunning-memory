@@ -52,4 +52,4 @@ func _on_Timer_timeout():
 		for i in range(tokens.size() -1, -1, -1):
 			token_time = int(tokens[i].right(64))
 			if current_time - token_time >= 30:
-				tokens.remove[i]
+				tokens.remove(i)

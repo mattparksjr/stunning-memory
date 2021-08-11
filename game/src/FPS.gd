@@ -55,6 +55,9 @@ func _input(event):
 		if Input.is_key_pressed(KEY_KP_4):
 			print("DEBUG KEY PRESSED")
 			Gateway._connect("username", "password")
+		if Input.is_key_pressed(KEY_KP_5):
+			print("DEBUG KEY PRESSED")
+			Game.tmp_do()
 
 func _process(delta):
 	# camera physics interpolation to reduce physics jitter on high refresh-rate monitors (like matts)

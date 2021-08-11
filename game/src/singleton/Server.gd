@@ -19,3 +19,9 @@ func on_connect_fail():
 
 func on_connect_succeeded():
 	print("Connected to server")
+
+func fetch_stats():
+	rpc_id(1, "fetch_stats")
+	
+remote func return_stats(stats):
+	get_node("/root/Game").load_stats(stats)

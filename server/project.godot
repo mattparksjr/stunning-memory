@@ -27,6 +27,7 @@ config/icon="res://icon.png"
 [autoload]
 
 LogFormatter="*res://src/LogFormatter.gd"
+ServerData="*res://src/ServerData.gd"
 
 [gdnative]
 

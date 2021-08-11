@@ -23,6 +23,7 @@ func peer_connected(player_id):
 
 func peer_disconnected(player_id):
 	print(LogFormatter.format("User " + str(player_id) + " has disconnected"))
+	get_node(str(player_id)).queue_free()
 
 remote func fetch_stats():
 	print(LogFormatter.format("Handling request to get player stats"))

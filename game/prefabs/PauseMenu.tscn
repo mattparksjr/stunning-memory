@@ -27,30 +27,37 @@ anchor_bottom = 0.5
 margin_left = -200.0
 margin_top = -399.0
 margin_right = 200.0
-margin_bottom = 399.0
+margin_bottom = 538.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Resume" type="Button" parent="VBoxContainer"]
-margin_top = 300.0
+margin_top = 250.0
 margin_right = 400.0
-margin_bottom = 363.0
+margin_bottom = 313.0
 custom_fonts/font = ExtResource( 3 )
 text = "Resume"
 
-[node name="Settings" type="Button" parent="VBoxContainer"]
-margin_top = 367.0
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+margin_top = 317.0
 margin_right = 400.0
-margin_bottom = 430.0
+margin_bottom = 552.399
+rect_min_size = Vector2( 0, 235.399 )
+color = Color( 1, 1, 1, 0 )
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+margin_top = 556.0
+margin_right = 400.0
+margin_bottom = 619.0
 custom_fonts/font = ExtResource( 3 )
 text = "Settings"
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
-margin_top = 434.0
+margin_top = 623.0
 margin_right = 400.0
-margin_bottom = 497.0
+margin_bottom = 686.0
 custom_fonts/font = ExtResource( 3 )
 text = "Exit"
 

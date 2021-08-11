@@ -19,18 +19,18 @@ func start():
 	custom_multiplayer.set_root_node(self)
 	custom_multiplayer.set_network_peer(network)
 	
-	print("Gateway server started")
+	print(LogFormatter.format("Gateway server started"))
 	network.connect("peer_connected", self, "peer_connected")
 	network.connect("peer_disconnected", self, "peer_disconnected")
 	
 func peer_connected(player_id):
-	print("User " + str(player_id) + " has connected")
+	print(LogFormatter.format("User " + str(player_id) + " has connected"))
 
 func peer_disconnected(player_id):
-	print("User " + str(player_id) + " has disconnected")
+	print(LogFormatter.format("User " + str(player_id) + " has disconnected"))
 
 remote func login_request(username, password):
-	print("Got login request")
+	print(LogFormatter.format("Got login request"))
 	var player_id = custom_multiplayer.get_rpc_sender_id()
 	Authenticate.auth_player(username, password, player_id)
 

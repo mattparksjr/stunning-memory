@@ -102,8 +102,7 @@ func _physics_process(delta):
 			velocity = velocity.linear_interpolate(direction * speed, accel * delta)
 			movement = velocity + gravity_vec
 	
-		if direction != Vector3():
-			move_and_slide_with_snap(movement, snap, Vector3.UP)
+		move_and_slide_with_snap(movement, snap, Vector3.UP)
 	
 ################ Mouse visibly helpers ################
 func hide_mouse():

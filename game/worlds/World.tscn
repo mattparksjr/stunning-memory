@@ -93,3 +93,5 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -21.3609, -3.50493, -3.7
 
 [node name="FPS" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -8.8, 1.29, 0.036 )
+
+[connection signal="do_pause" from="FPS" to="Pause Menu" method="_on_FPS_do_pause"]

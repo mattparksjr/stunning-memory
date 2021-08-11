@@ -42,9 +42,9 @@ func req_login():
 	username = ""
 	password = ""
 
-remote func return_login_request(result):
+remote func return_login_request(result, token):
 	if result == true:
-		print("Auth succeeded")
+		Server.token = token
 		Server._connect()
 	else:
 		print("Auth failed")

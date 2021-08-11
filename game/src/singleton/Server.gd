@@ -3,6 +3,7 @@ extends Node
 var network = NetworkedMultiplayerENet.new()
 var ip = "127.0.0.1"
 var port = 6969
+var token 
 
 func _ready():
 	pass
@@ -22,6 +23,15 @@ func on_connect_succeeded():
 
 func fetch_stats():
 	rpc_id(1, "fetch_stats")
+	
+remote func return_verify_result(result):
+	if result:
+		print("Token verification was successful")
+	else:
+		print("Token verification failed")
+
+remote func get_token():
+	rpc_id(1, "return_token", token)
 	
 remote func return_stats(stats):
 	get_node("/root/Game").load_stats(stats)

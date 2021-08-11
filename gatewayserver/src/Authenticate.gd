@@ -8,6 +8,7 @@ func _ready():
 	_connect()
 
 func _connect():
+	print(LogFormatter.format("Connecting to the auth server...."))
 	network.create_client(ip, port)
 	get_tree().set_network_peer(network)
 	
@@ -24,6 +25,6 @@ remote func auth_player(username, password, player_id):
 	print(LogFormatter.format("Sending auth request"))
 	rpc_id(1, "auth_player", username, password, player_id)
 	
-remote func auth_result(result, player_id):
+remote func auth_result(result, player_id, token):
 	print(LogFormatter.format("Got auth request result, relaying...."))
-	GatewayServer.return_login_request(result, player_id)
+	GatewayServer.return_login_request(result, player_id, token)

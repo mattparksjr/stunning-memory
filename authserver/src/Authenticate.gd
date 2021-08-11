@@ -25,6 +25,8 @@ remote func auth_player(username, password, player_id):
 	print(LogFormatter.format("Got auth request"))
 	var gateway_id = get_tree().get_rpc_sender_id()
 	var result
+	var token
+	
 	if username != "username":
 		result = false
 	elif password != "password":
@@ -32,5 +34,18 @@ remote func auth_player(username, password, player_id):
 	else:
 		print(LogFormatter.format("Correct auth recieved"))
 		result = true
+		
+		randomize()
+		var random_n = randi()
+		var hashed = str(random_n).sha256_text()
+		print(LogFormatter.format("Hash: " + hashed))
+		var timestamp = str(OS.get_unix_time())
+		print(LogFormatter.format(timestamp))
+		token = hashed + timestamp
+		print(LogFormatter.format(token))
+		# TODO load balancing
+		var game_server = "game_sever1"
+		GameServers.distribute_token(token, game_server)
+		
 	print(LogFormatter.format("Sending auth result to gateway"))
-	rpc_id(gateway_id, "auth_result", result, player_id)
+	rpc_id(gateway_id, "auth_result", result, player_id, token)

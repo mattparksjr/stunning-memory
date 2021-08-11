@@ -29,7 +29,6 @@ config/icon="res://icon.png"
 Server="*res://src/singleton/Server.gd"
 Gateway="*res://src/singleton/Gateway.gd"
 Game="*res://src/Game.gd"
-Globals="*res://src/singleton/Globals.gd"
 
 [display]
 

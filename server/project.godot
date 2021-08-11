@@ -24,6 +24,10 @@ config/name="GameServer"
 run/main_scene="res://Server.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+LogFormatter="*res://src/LogFormatter.gd"
+
 [gdnative]
 
 singletons=[ "res://git_api.gdnlib" ]

@@ -10,19 +10,19 @@ func _ready():
 func start_server():
 	network.create_server(port, max_servers)
 	get_tree().set_network_peer(network)
-	print("Auth server started")
+	print(LogFormatter.format("Auth server started"))
 	
 	network.connect("peer_connected", self, "_peer_connected")
 	network.connect("peer_disconnected", self, "_peer_disconnected")
 
 func _peer_connected(gateway_id):
-	print("Gateway " + str(gateway_id) + " connected")
+	print(LogFormatter.format("Gateway " + str(gateway_id) + " connected"))
 	
 func _peer_disconnected(gateway_id):
-	print("Gateway " + str(gateway_id) + " disconnected")
+	print(LogFormatter.format("Gateway " + str(gateway_id) + " disconnected"))
 	
 remote func auth_player(username, password, player_id):
-	print("Got auth request")
+	print(LogFormatter.format("Got auth request"))
 	var gateway_id = get_tree().get_rpc_sender_id()
 	var result
 	if username != "username":
@@ -30,7 +30,7 @@ remote func auth_player(username, password, player_id):
 	elif password != "password":
 		result = false
 	else:
-		print("Correct auth recieved")
+		print(LogFormatter.format("Correct auth recieved"))
 		result = true
-	print("Sending auth result to gateway")
+	print(LogFormatter.format("Sending auth result to gateway"))
 	rpc_id(gateway_id, "auth_result", result, player_id)

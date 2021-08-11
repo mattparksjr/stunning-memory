@@ -15,15 +15,15 @@ func _connect():
 	network.connect("connection_succeeded", self, "on_connect_succeeded")
 
 func on_connect_fail():
-	print("Error: Connection failed (auth server)")
+	print(LogFormatter.format("Error: Connection failed (auth server)"))
 
 func on_connect_succeeded():
-	print("Connected to server (auth server)")
+	print(LogFormatter.format("Connected to server (auth server)"))
 
 remote func auth_player(username, password, player_id):
-	print("Sending auth request")
+	print(LogFormatter.format("Sending auth request"))
 	rpc_id(1, "auth_player", username, password, player_id)
 	
 remote func auth_result(result, player_id):
-	print("Got auth request result, relaying....")
+	print(LogFormatter.format("Got auth request result, relaying...."))
 	GatewayServer.return_login_request(result, player_id)

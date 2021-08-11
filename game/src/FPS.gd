@@ -28,8 +28,11 @@ var gravity_vec = Vector3()
 var movement = Vector3()
 
 signal do_pause
+signal kill
+
 onready var head = $Head
 onready var camera = $Head/Camera
+onready var spawn = get_parent().get_node("PlayerSpawn")
 
 func _ready():
 	set_process_input(true)
@@ -70,9 +73,6 @@ func _process(delta):
 		camera.set_as_toplevel(false)
 		camera.global_transform = head.global_transform
 		
-remote func _set_position(pos):
-	global_transform.origin = pos
-
 func _physics_process(delta):
 	if not paused:
 		direction = Vector3.ZERO
@@ -120,3 +120,9 @@ func _enter_tree():
 	
 func _leave_tree():
 	show_mouse()
+
+################ RESPAWN TMP DEBUG ##############
+
+func _on_DeathArea_kill():
+	print("should be teleporting")
+	transform.origin = spawn.transform.origin

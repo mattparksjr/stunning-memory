@@ -17,3 +17,6 @@ The gateway server is used to finish the connection between the client and the g
 
 ## Game Server
 The game server handles, well, the game server stuff. All of the player sync, and sever side stuff for making the game run are done in here. It also [has its own docs](https://github.com/mattparksjr/stunning-memory/tree/main/server/README.md). 
+
+## SSL-Gen
+You dont need to open this, if you need it for something, message matt

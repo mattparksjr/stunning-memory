@@ -5,6 +5,7 @@ var gateway_api = MultiplayerAPI.new()
 
 var ip = "127.0.0.1"
 var port = 6971
+var cert = load("res://resources/cert.crt")
 
 var username
 var password
@@ -20,6 +21,12 @@ func _connect(_username, _password):
 	print("Got request to connect to gateway")
 	network = NetworkedMultiplayerENet.new()
 	gateway_api = MultiplayerAPI.new()
+	
+	# SSL
+	network.set_dtls_enabled(true)
+	network.set_dtls_verify_enabled(false) # TODO: Change on production launch
+	network.set_dtls_certificate(cert)
+	
 	username = _username
 	password = _password
 	network.create_client(ip, port)

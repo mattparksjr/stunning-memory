@@ -24,6 +24,12 @@ func on_connect_succeeded():
 func fetch_stats():
 	rpc_id(1, "fetch_stats")
 	
+remote func spawn_player(player_id):
+	get_node("../SceneHandler/Map").spawn_player(player_id)
+	
+remote func despawn_player(player_id):
+	get_node("../SceneHandler/Map").despawn_player(player_id)
+	
 remote func return_verify_result(result):
 	if result:
 		print("Token verification was successful")

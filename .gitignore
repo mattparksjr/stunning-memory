@@ -5,3 +5,4 @@ LICENSE
 *.pck
 gatewayserver/cert/key.key
 gatewayserver/cert/cert.crt
+*.TMP

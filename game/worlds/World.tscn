@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://prefabs/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/FPSCounter.gd" type="Script" id=2]
@@ -7,8 +7,10 @@
 [ext_resource path="res://prefabs/matts world.tscn" type="PackedScene" id=5]
 [ext_resource path="res://prefabs/tree1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://prefabs/DeathArea.tscn" type="PackedScene" id=7]
+[ext_resource path="res://worlds/World.gd" type="Script" id=8]
 
 [node name="Map" type="Node"]
+script = ExtResource( 8 )
 
 [node name="Pause Menu" parent="." instance=ExtResource( 4 )]
 visible = false
@@ -100,6 +102,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -33.6922, -6.47409, 31.828 )
 
 [node name="PlayerSpawn" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.8, 1.29, 0.036 )
+
+[node name="NetworkedPlayers" type="Node" parent="."]
 
 [connection signal="do_pause" from="FPS" to="Pause Menu" method="_on_FPS_do_pause"]
 [connection signal="kill" from="DeathArea" to="FPS" method="_on_DeathArea_kill"]

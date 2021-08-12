@@ -24,7 +24,9 @@ func peer_connected(player_id):
 
 func peer_disconnected(player_id):
 	print(LogFormatter.format("User " + str(player_id) + " has disconnected"))
-	get_node(str(player_id)).queue_free()
+	if has_node(str(player_id)):
+		get_node(str(player_id)).queue_free()
+		rpc_id(0, "despawn_player", player_id)
 
 remote func fetch_stats():
 	print(LogFormatter.format("Handling request to get player stats"))
@@ -41,6 +43,8 @@ remote func return_token(token):
 	
 func return_verify_result(player_id, result):
 	rpc_id(player_id, "return_verify_result", result)
+	if result == true:
+		rpc_id(0, "spawn_player", player_id)
 	
 func _on_Timer_timeout():
 	var current_time = OS.get_unix_time()

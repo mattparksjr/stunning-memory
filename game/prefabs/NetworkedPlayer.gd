@@ -1,4 +1,4 @@
 extends KinematicBody
 
-func _ready():
-	pass # Replace with function body.
+func move(new_pos):
+	transform = new_pos

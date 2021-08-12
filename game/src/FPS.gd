@@ -8,12 +8,10 @@ extends KinematicBody
 
 export var speed = 7
 export var sprint_speed_multi = 1.5
-
-# These could be constants butttt export more fun :)
 export var ACCEL_DEFAULT = 7
 export var ACCEL_AIR = 1
-
 onready var accel = ACCEL_DEFAULT
+
 export var gravity = 9.8
 export var jump = 4.5
 
@@ -26,6 +24,7 @@ var direction = Vector3()
 var velocity = Vector3()
 var gravity_vec = Vector3()
 var movement = Vector3()
+var player_state
 
 signal do_pause
 signal kill
@@ -74,39 +73,49 @@ func _process(delta):
 		camera.global_transform = head.global_transform
 		
 func _physics_process(delta):
-	if not paused:
-		direction = Vector3.ZERO
+	if paused:
+		return
+	direction = Vector3.ZERO
+
+	# input values
+	var h_rot = global_transform.basis.get_euler().y
+	var f_input = Input.get_action_strength("move_back") - Input.get_action_strength("move_forward")
+	var h_input = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+
+	direction = Vector3(h_input, 0, f_input).rotated(Vector3.UP, h_rot).normalized()
+
+	if is_on_floor():
+		snap = -get_floor_normal()
+		accel = ACCEL_DEFAULT
+		gravity_vec = Vector3.ZERO
+	else:
+		snap = Vector3.DOWN
+		accel = ACCEL_AIR
+		gravity_vec += Vector3.DOWN * gravity * delta
 	
-		# input values
-		var h_rot = global_transform.basis.get_euler().y
-		var f_input = Input.get_action_strength("move_back") - Input.get_action_strength("move_forward")
-		var h_input = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	
-		direction = Vector3(h_input, 0, f_input).rotated(Vector3.UP, h_rot).normalized()
-	
-		if is_on_floor():
-			snap = -get_floor_normal()
-			accel = ACCEL_DEFAULT
-			gravity_vec = Vector3.ZERO
-		else:
-			snap = Vector3.DOWN
-			accel = ACCEL_AIR
-			gravity_vec += Vector3.DOWN * gravity * delta
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		snap = Vector3.ZERO
+		gravity_vec = Vector3.UP * jump
+
+	# make it move
+	if(Input.is_action_pressed("sprint")):
+		velocity = velocity.linear_interpolate(direction * speed * sprint_speed_multi, accel * delta)
+		movement = velocity + gravity_vec
+	else:
+		velocity = velocity.linear_interpolate(direction * speed, accel * delta)
+		movement = velocity + gravity_vec
+
+	move_and_slide_with_snap(movement, snap, Vector3.UP)
+
+	# TODO: This line is temp, should need to be here once we have main menu
+	if Server.token != "":
+		define_player_state()
 		
-		if Input.is_action_just_pressed("jump") and is_on_floor():
-			snap = Vector3.ZERO
-			gravity_vec = Vector3.UP * jump
 	
-		# make it move
-		if(Input.is_action_pressed("sprint")):
-			velocity = velocity.linear_interpolate(direction * speed * sprint_speed_multi, accel * delta)
-			movement = velocity + gravity_vec
-		else:
-			velocity = velocity.linear_interpolate(direction * speed, accel * delta)
-			movement = velocity + gravity_vec
-	
-		move_and_slide_with_snap(movement, snap, Vector3.UP)
-	
+func define_player_state():
+	player_state = {"T": OS.get_system_time_msecs(), "P": global_transform}
+	Server.send_state(player_state)
+	 
 ################ Mouse visibly helpers ################
 func hide_mouse():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

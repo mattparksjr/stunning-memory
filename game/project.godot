@@ -46,6 +46,11 @@ enabled=PoolStringArray( "res://addons/MagicaVoxelImporter/plugin.cfg" )
 
 singletons=[ "res://git_api.gdnlib" ]
 
+[global]
+
+physi=false
+physics=false
+
 [input]
 
 move_left={

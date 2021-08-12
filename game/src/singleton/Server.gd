@@ -3,7 +3,7 @@ extends Node
 var network = NetworkedMultiplayerENet.new()
 var ip = "127.0.0.1"
 var port = 6969
-var token 
+var token = ""
 
 func _ready():
 	pass
@@ -24,11 +24,18 @@ func on_connect_succeeded():
 func fetch_stats():
 	rpc_id(1, "fetch_stats")
 	
+func send_state(player_state):
+	print("Sending player state: " + str(player_state))
+	rpc_unreliable_id(1, "recieve_player_state", player_state)
+	
 remote func spawn_player(player_id):
 	get_node("../SceneHandler/Map").spawn_player(player_id)
 	
 remote func despawn_player(player_id):
 	get_node("../SceneHandler/Map").despawn_player(player_id)
+	
+remote func recieve_world_state(world_state):
+	get_node("../SceneHandler/Map").update_world_state(world_state)
 	
 remote func return_verify_result(result):
 	if result:

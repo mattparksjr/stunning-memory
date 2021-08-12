@@ -6,6 +6,7 @@ var max_players = 8
 
 onready var player_verify = get_node("PlayerVerification")
 var tokens = []
+var player_states = {}
 
 func _ready():
 	start_server()
@@ -26,7 +27,20 @@ func peer_disconnected(player_id):
 	print(LogFormatter.format("User " + str(player_id) + " has disconnected"))
 	if has_node(str(player_id)):
 		get_node(str(player_id)).queue_free()
+		player_states.erase(player_id)
 		rpc_id(0, "despawn_player", player_id)
+
+func send_world_state(world_state):
+	rpc_unreliable_id(0, "recieve_world_state", world_state)
+	
+remote func recieve_player_state(player_state):
+	var player_id = get_tree().get_rpc_sender_id()
+	# This check makes sure we dont update the state if we dont need to(got old packet after newer)
+	if player_states.has(player_id):
+		if(player_states[player_id]["T"] < player_state["T"]):
+			player_states[player_id] = player_state
+	else:
+		player_states[player_id] = player_state
 
 remote func fetch_stats():
 	print(LogFormatter.format("Handling request to get player stats"))

@@ -73,8 +73,8 @@ func _process(delta):
 		camera.global_transform = head.global_transform
 		
 func _physics_process(delta):
-	if paused:
-		return
+	#if paused:
+		#return
 	direction = Vector3.ZERO
 
 	# input values

@@ -25,7 +25,6 @@ func fetch_stats():
 	rpc_id(1, "fetch_stats")
 	
 func send_state(player_state):
-	print("Sending player state: " + str(player_state))
 	rpc_unreliable_id(1, "recieve_player_state", player_state)
 	
 remote func spawn_player(player_id):

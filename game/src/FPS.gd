@@ -24,7 +24,7 @@ var direction = Vector3()
 var velocity = Vector3()
 var gravity_vec = Vector3()
 var movement = Vector3()
-var player_state
+var player_state = []
 
 signal do_pause
 signal kill
@@ -113,7 +113,8 @@ func _physics_process(delta):
 		
 	
 func define_player_state():
-	player_state = {"T": OS.get_system_time_msecs(), "P": global_transform}
+	player_state.clear()
+	player_state = {"T": OS.get_system_time_msecs(), "P": transform.origin}
 	Server.send_state(player_state)
 	 
 ################ Mouse visibly helpers ################

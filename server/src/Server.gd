@@ -30,6 +30,14 @@ func peer_disconnected(player_id):
 		player_states.erase(player_id)
 		rpc_id(0, "despawn_player", player_id)
 
+remote func fetch_time(client_time):
+	var player_id = get_tree().get_rpc_sender_id()
+	rpc_id(player_id, "recieve_time", OS.get_system_time_msecs(), client_time)
+	
+remote func calc_latency(client_time):
+	var player_id = get_tree().get_rpc_sender_id()
+	rpc_id(player_id, "return_latency", client_time)
+	
 func send_world_state(world_state):
 	rpc_unreliable_id(0, "recieve_world_state", world_state)
 	

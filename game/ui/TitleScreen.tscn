@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/fonts/Roboto/Regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/ui/BtnStyle.tres" type="StyleBox" id=2]
@@ -19,6 +19,9 @@ font_data = ExtResource( 4 )
 
 [sub_resource type="Theme" id=3]
 default_font = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 0.623529 )
 
 [node name="ColorRect" type="ColorRect"]
 margin_left = 0.587402
@@ -155,6 +158,27 @@ text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MultiplayerPopup" type="WindowDialog" parent="."]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -421.0
+margin_top = -281.0
+margin_right = 421.0
+margin_bottom = 281.0
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" type="LineEdit" parent="MultiplayerPopup"]
+margin_left = 78.408
+margin_top = 22.408
+margin_right = 649.408
+margin_bottom = 106.408
 
 [connection signal="pressed" from="VBoxContainer/ToolButton" to="." method="on_single_press"]
 [connection signal="pressed" from="VBoxContainer/ToolButton4" to="." method="on_multiplayer_press"]

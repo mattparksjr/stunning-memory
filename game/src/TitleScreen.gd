@@ -13,4 +13,4 @@ func on_exit_press():
 	get_tree().quit()
 
 func on_multiplayer_press():
-	pass # Replace with function body.
+	get_node("MultiplayerPopup").popup()

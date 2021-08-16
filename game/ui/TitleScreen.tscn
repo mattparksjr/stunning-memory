@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/fonts/Roboto/Regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/ui/BtnStyle.tres" type="StyleBox" id=2]
@@ -20,13 +20,43 @@ font_data = ExtResource( 4 )
 [sub_resource type="Theme" id=3]
 default_font = ExtResource( 1 )
 
+[sub_resource type="Shader" id=8]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform int blurSize : hint_range(0,20);
+uniform float blurClarity : hint_range(0,200);
+
+void fragment()
+{
+	COLOR = textureLod(SCREEN_TEXTURE, SCREEN_UV, float(blurSize)/blurClarity);
+}"
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = SubResource( 8 )
+shader_param/blurSize = 20
+shader_param/blurClarity = 30.0
+
+[sub_resource type="GradientTexture" id=10]
+
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0, 0, 0, 0.623529 )
 
+[sub_resource type="DynamicFont" id=5]
+size = 32
+outline_color = Color( 0.819608, 0.847059, 0.878431, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 42
+outline_color = Color( 0.819608, 0.847059, 0.878431, 1 )
+font_data = ExtResource( 4 )
+
 [node name="ColorRect" type="ColorRect"]
-margin_left = 0.587402
-margin_right = 1920.59
-margin_bottom = 1080.0
+margin_left = -0.41864
+margin_top = -0.627808
+margin_right = 1919.58
+margin_bottom = 1079.37
 color = Color( 0.294118, 0.396078, 0.517647, 1 )
 script = ExtResource( 5 )
 __meta__ = {
@@ -63,8 +93,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -519.0
+margin_left = -519.003
 margin_top = -38.0
+margin_right = -0.00268555
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.819608, 0.847059, 0.878431, 1 )
 text = "Game version: 0.0.1 CLOSED ALPHA"
@@ -88,7 +119,7 @@ __meta__ = {
 }
 
 [node name="ToolButton" type="Button" parent="VBoxContainer"]
-margin_right = 648.0
+margin_right = 647.0
 margin_bottom = 63.0
 theme = SubResource( 3 )
 custom_styles/hover = ExtResource( 3 )
@@ -103,7 +134,7 @@ __meta__ = {
 
 [node name="ToolButton4" type="Button" parent="VBoxContainer"]
 margin_top = 103.0
-margin_right = 648.0
+margin_right = 647.0
 margin_bottom = 166.0
 theme = SubResource( 3 )
 custom_styles/hover = ExtResource( 3 )
@@ -118,7 +149,7 @@ __meta__ = {
 
 [node name="ToolButton2" type="Button" parent="VBoxContainer"]
 margin_top = 206.0
-margin_right = 648.0
+margin_right = 647.0
 margin_bottom = 269.0
 theme = SubResource( 3 )
 custom_styles/hover = ExtResource( 3 )
@@ -146,7 +177,7 @@ __meta__ = {
 }
 
 [node name="ToolButton3" type="Button" parent="VBoxContainer2"]
-margin_right = 648.0
+margin_right = 647.0
 margin_bottom = 63.0
 theme = SubResource( 3 )
 custom_styles/hover = ExtResource( 3 )
@@ -159,8 +190,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="PopupBlur" type="Sprite" parent="."]
+visible = false
+material = SubResource( 9 )
+position = Vector2( 448.225, 540.063 )
+scale = Vector2( 1.43772, 1081.13 )
+texture = SubResource( 10 )
+
 [node name="MultiplayerPopup" type="WindowDialog" parent="."]
-visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -175,11 +212,70 @@ __meta__ = {
 }
 
 [node name="LineEdit" type="LineEdit" parent="MultiplayerPopup"]
-margin_left = 78.408
-margin_top = 22.408
-margin_right = 649.408
-margin_bottom = 106.408
+margin_left = 199.28
+margin_top = 60.1716
+margin_right = 770.28
+margin_bottom = 106.172
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit2" type="LineEdit" parent="MultiplayerPopup"]
+margin_left = 196.793
+margin_top = 136.925
+margin_right = 767.793
+margin_bottom = 182.925
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MultiplayerPopup"]
+margin_left = 11.0
+margin_top = 62.0
+margin_right = 144.0
+margin_bottom = 141.0
+custom_fonts/font = SubResource( 5 )
+text = "Server ip:
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="MultiplayerPopup"]
+margin_left = 13.0022
+margin_top = 138.086
+margin_right = 146.002
+margin_bottom = 217.086
+custom_fonts/font = SubResource( 5 )
+text = "Server port:
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="MultiplayerPopup"]
+margin_left = 273.38
+margin_top = 2.56543
+margin_right = 600.38
+margin_bottom = 81.5654
+custom_fonts/font = SubResource( 6 )
+text = "Connect to server"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="MultiplayerPopup"]
+margin_left = 258.061
+margin_top = 473.122
+margin_right = 561.061
+margin_bottom = 550.122
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
+text = "Connect"
 
 [connection signal="pressed" from="VBoxContainer/ToolButton" to="." method="on_single_press"]
 [connection signal="pressed" from="VBoxContainer/ToolButton4" to="." method="on_multiplayer_press"]
 [connection signal="pressed" from="VBoxContainer2/ToolButton3" to="." method="on_exit_press"]
+[connection signal="hide" from="MultiplayerPopup" to="." method="hide_blur"]

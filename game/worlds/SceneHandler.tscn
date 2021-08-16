@@ -4,3 +4,6 @@
 
 [node name="SceneHandler" type="Node"]
 script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "Dont touch"
+}

@@ -13,4 +13,9 @@ func on_exit_press():
 	get_tree().quit()
 
 func on_multiplayer_press():
+	get_node("PopupBlur").set_visible(true)
 	get_node("MultiplayerPopup").popup()
+
+
+func hide_blur():
+	get_node("PopupBlur").set_visible(false)

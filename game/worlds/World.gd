@@ -65,6 +65,7 @@ func _physics_process(delta):
 					var new_pos = world_state_buffer[1][player]["P"] + (position_delta * extrapolation_factor)
 					get_node("NetworkedPlayers/" + 
 						str(player)).move(new_pos)
+						
 func update_world_state(world_state):
 	if world_state["T"] > last_world_update:
 		last_world_update = world_state["T"]

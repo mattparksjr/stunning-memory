@@ -41,6 +41,7 @@ func on_connect_fail():
 
 func on_connect_succeeded():
 	print("Connected to server")
+	get_node("/root/SceneHandler/ColorRect").status_text.append_bbcode("[color=white]Logging in...[/color]")
 	req_login()
 	
 func req_login():
@@ -52,8 +53,12 @@ func req_login():
 remote func return_login_request(result, token):
 	if result == true:
 		Server.token = token
+		get_node("/root/SceneHandler/ColorRect").status_text.bbcode_text = ""
+		get_node("/root/SceneHandler/ColorRect").status_text.append_bbcode("[color=white]Connecting to game server...[/color]")
 		Server._connect()
 	else:
+		get_node("/root/SceneHandler/ColorRect").status_text.bbcode_text = ""
+		get_node("/root/SceneHandler/ColorRect").status_text.append_bbcode("[color=red]Authentication failed.[/color]")
 		print("Auth failed")
 	network.disconnect("connection_failed", self, "on_connect_fail")
 	network.disconnect("connection_succeeded", self, "on_connect_succeeded")

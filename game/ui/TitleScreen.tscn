@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/fonts/Roboto/Regular.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/ui/BtnStyle.tres" type="StyleBox" id=2]
@@ -47,16 +47,20 @@ size = 32
 outline_color = Color( 0.819608, 0.847059, 0.878431, 1 )
 font_data = ExtResource( 4 )
 
+[sub_resource type="DynamicFont" id=12]
+size = 32
+outline_color = Color( 0.819608, 0.847059, 0.878431, 1 )
+font_data = ExtResource( 4 )
+
 [sub_resource type="DynamicFont" id=6]
 size = 42
 outline_color = Color( 0.819608, 0.847059, 0.878431, 1 )
 font_data = ExtResource( 4 )
 
 [node name="ColorRect" type="ColorRect"]
-margin_left = -0.41864
-margin_top = -0.627808
-margin_right = 1919.58
-margin_bottom = 1079.37
+margin_top = -1.375
+margin_right = 1920.0
+margin_bottom = 1078.63
 color = Color( 0.294118, 0.396078, 0.517647, 1 )
 script = ExtResource( 5 )
 __meta__ = {
@@ -242,13 +246,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Status" type="Label" parent="MultiplayerPopup"]
-margin_left = 14.6489
-margin_top = 424.432
-margin_right = 845.649
-margin_bottom = 503.432
-custom_fonts/font = SubResource( 5 )
-text = "Status: "
+[node name="Status" type="RichTextLabel" parent="MultiplayerPopup"]
+margin_left = 15.0
+margin_top = 340.0
+margin_right = 125.0
+margin_bottom = 380.0
+custom_fonts/normal_font = SubResource( 12 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+custom_colors/selection_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+bbcode_enabled = true
+bbcode_text = "Status:"
+text = "Status:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatusText" type="RichTextLabel" parent="MultiplayerPopup"]
+margin_left = 126.0
+margin_top = 340.0
+margin_right = 832.0
+margin_bottom = 444.0
+custom_fonts/normal_font = SubResource( 12 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+custom_colors/selection_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
+bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

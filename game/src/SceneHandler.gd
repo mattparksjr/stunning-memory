@@ -12,3 +12,9 @@ func load_single():
 	print("Loading map")
 	var mapstart_ins = map_start.instance()
 	add_child(mapstart_ins)
+
+# TODO: TMP
+func load_multi():
+	print("Loading map")
+	var mapstart_ins = map_start.instance()
+	add_child(mapstart_ins)

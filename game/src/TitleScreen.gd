@@ -5,6 +5,8 @@
 #########################################
 extends ColorRect
 
+onready var status_text = get_node("MultiplayerPopup/StatusText")
+
 func on_single_press():
 	get_parent().load_single()
 	get_parent().remove_child(self)
@@ -23,5 +25,12 @@ func hide_blur():
 
 func on_connect_press():
 	if get_node("MultiplayerPopup/ServerIP").get_text() == "":
-		print("empty")
-	pass # Replace with function body.
+		status_text.bbcode_text = ""
+		status_text.append_bbcode("[color=red]Please enter a server ip.[/color]")
+	elif get_node("MultiplayerPopup/ServerPort").get_text() == "":
+		status_text.bbcode_text = ""
+		status_text.append_bbcode("[color=red]Please enter a server port.[/color]")
+	else:
+		status_text.bbcode_text = ""
+		status_text.append_bbcode("[color=white]Connecting to gateway...[/color]")
+		Gateway._connect("username", "password")

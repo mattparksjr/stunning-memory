@@ -1,8 +1,8 @@
 extends Node
 
+# 127.0.0.1
+# 6969
 var network = NetworkedMultiplayerENet.new()
-var ip = "127.0.0.1"
-var port = 6969
 var token = ""
 var client_clock = 0
 var latency = 0
@@ -19,6 +19,8 @@ func _physics_process(delta):
 		decimal_coll -= 1.00
 	
 func _connect():
+	var ip = get_node("/root/SceneHandler/ColorRect/MultiplayerPopup/ServerIP").text
+	var port = int(get_node("/root/SceneHandler/ColorRect/MultiplayerPopup/ServerPort").text)
 	network.create_client(ip, port)
 	get_tree().set_network_peer(network)
 	
@@ -30,12 +32,15 @@ func on_connect_fail():
 
 func on_connect_succeeded():
 	print("Connected to server")
+	get_node("/root/SceneHandler/ColorRect").status_text.bbcode_text = ""
+	get_node("/root/SceneHandler/ColorRect").status_text.append_bbcode("[color=white]Connected. Giving auth...[/color]")
 	rpc_id(1, "fetch_time", OS.get_system_time_msecs())
 	var timer = Timer.new()
 	timer.wait_time = 0.5
 	timer.autostart = true
 	timer.connect("timeout", self, "calc_latency")
 	self.add_child(timer)
+	
 	
 remote func recieve_time(server_time, client_time):
 	latency = (OS.get_system_time_msecs() - client_time) / 2
@@ -79,9 +84,11 @@ remote func recieve_world_state(world_state):
 	
 remote func return_verify_result(result):
 	if result:
-		print("Token verification was successful")
+		get_node("/root/SceneHandler/").remove_child(get_node("/root/SceneHandler/ColorRect"))
+		get_node("/root/SceneHandler").load_multi()
 	else:
-		print("Token verification failed")
+		get_node("/root/SceneHandler/ColorRect").status_text.bbcode_text = ""
+		get_node("/root/SceneHandler/ColorRect").status_text.append_bbcode("[color=red]Server token verification failed.[/color]")
 
 remote func get_token():
 	rpc_id(1, "return_token", token)

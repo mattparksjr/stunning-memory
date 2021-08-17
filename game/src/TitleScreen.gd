@@ -19,3 +19,9 @@ func on_multiplayer_press():
 
 func hide_blur():
 	get_node("PopupBlur").set_visible(false)
+
+
+func on_connect_press():
+	if get_node("MultiplayerPopup/ServerIP").get_text() == "":
+		print("empty")
+	pass # Replace with function body.

@@ -99,6 +99,10 @@ debug={
 
 3d_physics/layer_20="death area"
 
+[network]
+
+ssl/certificates="res://resources/cert.crt"
+
 [rendering]
 
 environment/default_environment="res://worlds/default_env.tres"

@@ -4,8 +4,9 @@ var data_path = "user://data.json"
 
 # Simple config stuff
 var default_values = {
-	"gateway-server-ip": "127.0.0.1",
-	"gateway-server-port": "6971",
+	"auth-server-ip": "127.0.0.1",
+	"auth-server-port": "8076",
+	"app-port": "6971",
 	"version": "0.0.1-DEV"
 }
 
@@ -28,8 +29,9 @@ func load_data():
 	data = parse_json(txt)
 	file.close()
 	
-	Gateway.ip = data["gateway-server-ip"]
-	Gateway.port = data["gateway-server-port"]
+	GatewayServer.port = data["app-port"]
+	Authenticate.ip = data["auth-server-ip"]
+	Authenticate.port = data["auth-server-port"]
 	
 func reset_data():
 	data = default_values.duplicate(true)

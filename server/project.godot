@@ -29,6 +29,7 @@ config/icon="res://icon.png"
 LogFormatter="*res://src/LogFormatter.gd"
 ServerData="*res://src/ServerData.gd"
 HubConnection="*res://src/HubConnection.gd"
+Globals="*res://src/Globals.gd"
 
 [gdnative]
 

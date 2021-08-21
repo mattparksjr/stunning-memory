@@ -1,7 +1,7 @@
 extends Node
 
 var network = NetworkedMultiplayerENet.new()
-var port = 6969
+var port = 0
 var max_players = 8
 
 onready var player_verify = get_node("PlayerVerification")

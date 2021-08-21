@@ -19,6 +19,7 @@ config/icon="res://icon.png"
 GatewayServer="*res://src/GatewayServer.gd"
 Authenticate="*res://src/Authenticate.gd"
 LogFormatter="*res://src/LogFormatter.gd"
+Globals="*res://src/Globals.gd"
 
 [physics]
 

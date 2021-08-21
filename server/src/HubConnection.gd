@@ -2,8 +2,8 @@ extends Node
 
 var network = NetworkedMultiplayerENet.new()
 var gateway_api = MultiplayerAPI.new()
-var ip = "127.0.0.1"
-var port = 1912
+var ip = ""
+var port = 0
 
 onready var gameserver = get_node("/root/Server")
 

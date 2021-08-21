@@ -31,6 +31,10 @@ Gateway="*res://src/singleton/Gateway.gd"
 Game="*res://src/singleton/Game.gd"
 Globals="*res://src/singleton/Globals.gd"
 
+[debug]
+
+settings/fps/force_fps=60
+
 [display]
 
 window/size/width=1920

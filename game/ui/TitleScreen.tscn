@@ -12,7 +12,7 @@ size = 32
 outline_color = Color( 0.819608, 0.847059, 0.878431, 1 )
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=2]
 size = 32
 outline_color = Color( 0.819608, 0.847059, 0.878431, 1 )
 font_data = ExtResource( 4 )
@@ -20,7 +20,7 @@ font_data = ExtResource( 4 )
 [sub_resource type="Theme" id=3]
 default_font = ExtResource( 1 )
 
-[sub_resource type="Shader" id=8]
+[sub_resource type="Shader" id=4]
 code = "shader_type canvas_item;
 render_mode unshaded;
 
@@ -32,27 +32,27 @@ void fragment()
 	COLOR = textureLod(SCREEN_TEXTURE, SCREEN_UV, float(blurSize)/blurClarity);
 }"
 
-[sub_resource type="ShaderMaterial" id=9]
-shader = SubResource( 8 )
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
 shader_param/blurSize = 20
 shader_param/blurClarity = 30.0
 
-[sub_resource type="GradientTexture" id=10]
+[sub_resource type="GradientTexture" id=6]
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0, 0, 0, 0.623529 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=8]
 size = 32
 outline_color = Color( 0.819608, 0.847059, 0.878431, 1 )
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=9]
 size = 32
 outline_color = Color( 0.819608, 0.847059, 0.878431, 1 )
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=10]
 size = 42
 outline_color = Color( 0.819608, 0.847059, 0.878431, 1 )
 font_data = ExtResource( 4 )
@@ -61,6 +61,9 @@ font_data = ExtResource( 4 )
 margin_top = -1.375
 margin_right = 1920.0
 margin_bottom = 1078.63
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
 color = Color( 0.294118, 0.396078, 0.517647, 1 )
 script = ExtResource( 5 )
 __meta__ = {
@@ -97,10 +100,11 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -519.003
-margin_top = -38.0
-margin_right = -0.00268555
-custom_fonts/font = SubResource( 11 )
+margin_left = -529.753
+margin_top = -38.375
+margin_right = -10.7528
+margin_bottom = -0.375
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.819608, 0.847059, 0.878431, 1 )
 text = "Game version: 0.0.1 CLOSED ALPHA"
 align = 2
@@ -196,10 +200,10 @@ __meta__ = {
 
 [node name="PopupBlur" type="Sprite" parent="."]
 visible = false
-material = SubResource( 9 )
+material = SubResource( 5 )
 position = Vector2( 448.225, 540.063 )
 scale = Vector2( 1.43772, 1081.13 )
-texture = SubResource( 10 )
+texture = SubResource( 6 )
 
 [node name="MultiplayerPopup" type="WindowDialog" parent="."]
 visible = true
@@ -211,7 +215,7 @@ margin_left = -421.0
 margin_top = -281.0
 margin_right = 421.0
 margin_bottom = 281.0
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -239,7 +243,7 @@ margin_left = 11.0
 margin_top = 62.0
 margin_right = 144.0
 margin_bottom = 141.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 8 )
 text = "Server ip:
 "
 __meta__ = {
@@ -251,7 +255,7 @@ margin_left = 15.0
 margin_top = 340.0
 margin_right = 125.0
 margin_bottom = 380.0
-custom_fonts/normal_font = SubResource( 12 )
+custom_fonts/normal_font = SubResource( 9 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 custom_colors/selection_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
@@ -267,7 +271,7 @@ margin_left = 126.0
 margin_top = 340.0
 margin_right = 832.0
 margin_bottom = 444.0
-custom_fonts/normal_font = SubResource( 12 )
+custom_fonts/normal_font = SubResource( 9 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 custom_colors/selection_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_selected = Color( 1, 1, 1, 1 )
@@ -281,7 +285,7 @@ margin_left = 13.0022
 margin_top = 138.086
 margin_right = 146.002
 margin_bottom = 217.086
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 8 )
 text = "Server port:
 "
 __meta__ = {
@@ -293,7 +297,7 @@ margin_left = 273.38
 margin_top = 2.56543
 margin_right = 600.38
 margin_bottom = 81.5654
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 10 )
 text = "Connect to server"
 __meta__ = {
 "_edit_use_anchors_": false

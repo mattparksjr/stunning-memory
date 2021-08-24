@@ -42,7 +42,9 @@ func _input(event):
 			# Rotates the head of the player based on mouse pos, and mouse sens
 			rotate_y(deg2rad(-event.relative.x * mouse_sense))
 			head.rotate_x(deg2rad(-event.relative.y * mouse_sense))
-			head.rotation.x = clamp(head.rotation.x, deg2rad(-89), deg2rad(89))
+			head.rotation.x = clamp(head.rotation.x, deg2rad(-42), deg2rad(70))
+			print(head.rotation.x)
+			print(head.rotation.y)
 	if event is InputEventKey:
 		# Keybinds, and pause menu
 		if(Input.is_action_pressed("pause")):
@@ -53,13 +55,6 @@ func _input(event):
 			show_mouse()
 		else:
 			hide_mouse()
-		# TODO: DEBUG ONLY
-		if Input.is_key_pressed(KEY_KP_4):
-			print("DEBUG KEY PRESSED")
-			Gateway._connect("username", "password")
-		if Input.is_key_pressed(KEY_KP_5):
-			print("DEBUG KEY PRESSED")
-			Game.tmp_do()
 
 func _process(delta):
 	# camera physics interpolation to reduce physics jitter on high refresh-rate monitors (like matts)
@@ -73,8 +68,8 @@ func _process(delta):
 		camera.global_transform = head.global_transform
 		
 func _physics_process(delta):
-	#if paused:
-		#return
+	if paused:
+		return
 	direction = Vector3.ZERO
 
 	# input values
@@ -107,8 +102,7 @@ func _physics_process(delta):
 
 	move_and_slide_with_snap(movement, snap, Vector3.UP)
 
-	# TODO: This line is temp, should need to be here once we have main menu
-	if Server.token != "":
+	if Server.is_connected:
 		define_player_state()
 		
 	

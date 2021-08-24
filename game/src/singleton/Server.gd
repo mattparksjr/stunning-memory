@@ -9,6 +9,7 @@ var latency = 0
 var latency_array = []
 var delta_latency = 0
 var decimal_coll : float = 0
+var is_connected = false
 
 func _physics_process(delta):
 	client_clock += int(delta*1000) + delta_latency
@@ -24,11 +25,13 @@ func _connect():
 	network.create_client(ip, port)
 	get_tree().set_network_peer(network)
 	
+	network.connect("peer_disconnected", self, "on_peer_disconnect")
 	network.connect("connection_failed", self, "on_connect_fail")
 	network.connect("connection_succeeded", self, "on_connect_succeeded")
 
 func on_connect_fail():
 	print("Error: Connection failed")
+	is_connected = false
 
 func on_connect_succeeded():
 	print("Connected to server")
@@ -40,7 +43,7 @@ func on_connect_succeeded():
 	timer.autostart = true
 	timer.connect("timeout", self, "calc_latency")
 	self.add_child(timer)
-	
+	is_connected = true
 	
 remote func recieve_time(server_time, client_time):
 	latency = (OS.get_system_time_msecs() - client_time) / 2
